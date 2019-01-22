@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Movie;
 
 class CatalogController extends Controller
 {
@@ -174,7 +175,7 @@ class CatalogController extends Controller
     }
     public function getIndex()
     {
-    	return view('catalog.index', array('arrayPeliculas'=>$this->arrayPeliculas));
+    	return view('catalog.index')with('peliculas',)
     }
     public function getShow($id)
     {
