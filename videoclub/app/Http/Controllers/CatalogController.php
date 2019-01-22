@@ -175,11 +175,11 @@ class CatalogController extends Controller
     }
     public function getIndex()
     {
-    	return view('catalog.index')with('peliculas',)
+    	return view('catalog.index')->with('peliculas', $Movies=>Movie::all());
     }
     public function getShow($id)
     {
-    	return view('catalog.show', array('arrayPeliculas'=>$this->arrayPeliculas[$id]))->with('idPelicula', $id);
+    	return view('catalog.show', array('arrayPeliculas'=>Movie::findOrFail($id)))->with('idPelicula', $id);
     }
     public function getCreate()
     {
@@ -187,6 +187,6 @@ class CatalogController extends Controller
     }
     public function getEdit($id)
     {
-    	return view('catalog.edit', array('arrayPeliculas'=>$this->arrayPeliculas[$id]));
+    	return view('catalog.edit', array('arrayPeliculas'=>Movie::findOrFail($id)));
     }
 }
